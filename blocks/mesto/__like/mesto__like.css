@@ -1,0 +1,13 @@
+.mesto__like{
+    width: 22px;
+    height: 19px;
+    border: 0;
+
+    padding: 0;
+    background-color: #fff;
+}
+
+.mesto__like:hover{
+    opacity: .6;
+    cursor: pointer;
+}

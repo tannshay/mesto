@@ -1,0 +1,11 @@
+.profile__button-image{
+    width: 10px;
+    height: 10px;
+}
+
+@media (max-width: 320px){
+    .profile__button-image{
+        width: 7.5px;
+        height: 7.5px;
+    }
+}

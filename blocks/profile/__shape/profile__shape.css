@@ -1,0 +1,10 @@
+.profile__shape{
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 320px){
+    .profile__shape{
+        flex-direction: column;
+    }
+}
