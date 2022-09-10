@@ -11,3 +11,10 @@
     opacity: .6;
     cursor: pointer;
 }
+
+@media (max-width: 800px){
+    .popup__close-button{
+        top: -36px;
+        right: 0;
+    }
+}

@@ -15,7 +15,7 @@
     text-align: start;
 }
 
-@media (max-width: 320px){
+@media (max-width: 800px){
     .popup__text{
         max-width: 238px;
     }

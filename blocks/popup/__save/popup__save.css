@@ -22,7 +22,7 @@
     cursor: pointer;
 }
 
-@media (max-width: 320px){
+@media (max-width: 800px){
     .popup__save{
         max-width: 238px;
         min-height: 46px;
