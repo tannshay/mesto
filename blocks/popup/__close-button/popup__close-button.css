@@ -14,7 +14,10 @@
 
 @media (max-width: 800px){
     .popup__close-button{
-        top: -36px;
-        right: 0;
+        width: 20px;
+        height: 20px;
+
+        top: -37px;
+        right: 6px;
     }
 }
