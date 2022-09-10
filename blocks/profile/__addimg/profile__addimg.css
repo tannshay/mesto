@@ -3,7 +3,7 @@
     height: 22px;
 }
 
-@media (max-width: 320px){
+@media (max-width: 800px){
     .profile__addimg{
         width: 16px;
         height: 16px;

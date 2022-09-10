@@ -3,7 +3,7 @@
     height: 10px;
 }
 
-@media (max-width: 320px){
+@media (max-width: 800px){
     .profile__button-image{
         width: 7.5px;
         height: 7.5px;

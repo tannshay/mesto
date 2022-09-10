@@ -5,13 +5,21 @@
     font-style: normal;
 
     margin: 0;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+    max-width: 294px;
 }
 
-@media (max-width: 320px){
+@media (max-width: 800px){
     .profile__name{
         font-size: 27px;
         line-height: 33px;
         margin-top: 26px;
         margin-left: 28px;
+
+        max-width: 190px;
     }
 }

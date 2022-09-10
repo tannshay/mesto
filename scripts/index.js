@@ -12,6 +12,8 @@ openEditProfileButton.addEventListener('click', () => {
 
 closeEditProfileButton.addEventListener('click', () => {
     popupEl.classList.remove('popup_opened');
+    nameInput.value = profileName.textContent;
+    aboutInput.value = profileAbout.textContent;
 })
 
 function formSubmitHandler (evt) {
