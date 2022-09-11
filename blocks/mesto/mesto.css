@@ -12,9 +12,7 @@
     .mesto{
         grid-template-columns: 282px;
         grid-template-rows: repeat(6, 361px);
-
         justify-content: center;
-
         padding-top: 36px;
         gap: 20px;
     }
