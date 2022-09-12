@@ -8,7 +8,7 @@
     align-items: center;
 }
 
-@media (max-width: 800px){
+@media (max-width: 900px){
     .profile{
         flex-direction: column;
     }
