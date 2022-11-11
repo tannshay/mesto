@@ -41,19 +41,29 @@ function renderCard(text) {
   img.alt = text.name;
   newHtmlElement.querySelector(".mesto__name").textContent = text.name;
 
-  const likeCard = newHtmlElement.querySelector('.mesto__like');
-  likeCard.addEventListener('click', (evt) => {
-    evt.target.classList.toggle('mesto__like_active');
+  const likeCard = newHtmlElement.querySelector(".mesto__like");
+  likeCard.addEventListener("click", (evt) => {
+    evt.target.classList.toggle("mesto__like_active");
   });
 
-  const cardDelete = newHtmlElement.querySelector('.mesto__delete');
-  cardDelete.addEventListener('click', (evt) => {
-    const currentCard = evt.target.closest('.mesto__element');
+  const cardDelete = newHtmlElement.querySelector(".mesto__delete");
+  cardDelete.addEventListener("click", (evt) => {
+    const currentCard = evt.target.closest(".mesto__element");
     currentCard.remove();
-  })
-
+  });
+  listenCard(img);
   cards.prepend(newHtmlElement);
 }
+
+function listenCard(img) {
+    img.addEventListener("click", function (evt) {
+      togglePopup(popupBigImg);
+      imgLink.src = img.src;
+      imgName.textContent = img
+        .closest(".mesto__element")
+        .querySelector(".mesto__name").textContent;
+    });
+  }
 
 render();
 
@@ -118,19 +128,11 @@ function formAddCardSubmitHandler(evt){
 
 popupFormAddCard.addEventListener('submit', formAddCardSubmitHandler);
 
-const allImgs = document.querySelectorAll('.mesto__img');
 const popupBigImg = document.querySelector('.popup_photo');
 const imgName = document.querySelector('.popup__subtitle');
 const imgLink = document.querySelector('.popup__img');
 const closePopupBigImg = popupBigImg.querySelector('.popup__close-button');
 
-allImgs.forEach(function(img){
-    img.addEventListener('click',function(evt){
-        togglePopup(popupBigImg);
-        imgLink.src = img.src;
-        imgName.textContent = img.closest('.mesto__element').querySelector('.mesto__name').textContent;
-    })
-})
 
 closePopupBigImg.addEventListener('click', function closepopup(){
     togglePopup(popupBigImg);
