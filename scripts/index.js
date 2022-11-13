@@ -18,7 +18,7 @@ const cardImgLink = popupAddCard.querySelector('.popup__text_type_about');
 const popupBigImg = document.querySelector('.popup_photo');
 const imgName = document.querySelector('.popup__subtitle');
 const imgPopup = document.querySelector('.popup__img');
-const closePopupBigImg = popupBigImg.querySelector('.popup__close-button');
+const closingPopupBigImg = popupBigImg.querySelector('.popup__close-button');
 
 function render() {
   for(let i = initialCards.length - 1; i>=0; i--){
@@ -115,6 +115,6 @@ closingPopupAddCardButton.addEventListener('click', function closepopup(){
 
 popupFormAddCard.addEventListener('submit', submitFormAddCardHandler);
 
-closePopupBigImg.addEventListener('click', function closepopup(){
+closingPopupBigImg.addEventListener('click', function closepopup(){
     closePopup(popupBigImg);
 })
