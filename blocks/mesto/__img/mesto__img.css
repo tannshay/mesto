@@ -4,3 +4,7 @@
     object-position: center;
     height: 282px;
 }
+
+.mesto__img:hover{
+    cursor: pointer;
+}
