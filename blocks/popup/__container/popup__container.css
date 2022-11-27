@@ -8,6 +8,11 @@
     flex-direction: column;
     align-items: center;
     position: relative;
+    cursor: default;
+}
+
+.popup__container:hover .popup__close-button{
+    opacity: 1;
 }
 
 @media (max-width: 900px){
