@@ -16,8 +16,8 @@ const cardImgLink = popupAddCard.querySelector('.popup__text_type_about');
 const popupBigImg = document.querySelector('.popup_photo');
 const imgName = document.querySelector('.popup__subtitle');
 const imgPopup = document.querySelector('.popup__img');
-const closingPopupBigImg = popupBigImg.querySelector('.popup__close-button');
 const popups = document.querySelectorAll('.popup');
+const popupAddCardSaveButton = popupAddCard.querySelector('.popup__save');
 
 function render() {
   for(let i = initialCards.length - 1; i>=0; i--){
@@ -83,16 +83,16 @@ const closePopup = function (popupEl) {
   document.removeEventListener('keydown', closePopupByEsc);
 };
 
-popups.forEach((popup) =>{
-  popup.addEventListener('mousedown', (evt) => {
-    if (Array.from(evt.target.classList).includes('popup_opened')){
+popups.forEach((popup) => {
+  popup.addEventListener("mousedown", (evt) => {
+    if (Array.from(evt.target.classList).includes("popup_opened")) {
       closePopup(popup);
     }
-    if (String(evt.target.classList) === 'popup__close-button'){
+    if (evt.target.classList.contains("popup__close-button")) {
       closePopup(popup);
-    } 
-  })
-})
+    }
+  });
+});
 
 function submitFormHandler(evt) {
   evt.preventDefault();
@@ -112,22 +112,22 @@ function submitFormAddCardHandler(evt){
   closePopup(popupAddCard);
 }
 
-openingEditProfileButton.addEventListener("click", function openpopup() {
+function openEditPopup(){
   openPopup(popupEditProfile);
   nameInput.value = profileName.textContent;
   aboutInput.value = profileAbout.textContent;
-});
+}
+
+function openAddCard(){
+  popupAddCardSaveButton.classList.add('popup__save_disabled');
+  popupAddCardSaveButton.setAttribute('disabled','disabled');
+  openPopup(popupAddCard);
+}
+
+openingEditProfileButton.addEventListener("click", openEditPopup);
 
 popupForm.addEventListener("submit", submitFormHandler);
 
-openingPopupAddCardButton.addEventListener('click', function openpopup(){
-  popupAddCard.querySelector('.popup__save').classList.add('popup__save_disabled');
-  popupAddCard.querySelector('.popup__save').setAttribute('disabled','disabled');
-  openPopup(popupAddCard);
-});
+openingPopupAddCardButton.addEventListener('click', openAddCard);
 
 popupFormAddCard.addEventListener('submit', submitFormAddCardHandler);
-
-closingPopupBigImg.addEventListener('click', function closepopup(){
-    closePopup(popupBigImg);
-});
