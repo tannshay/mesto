@@ -67,12 +67,32 @@ function listenCard(img) {
 
 render();
 
+function closePopupByEsc(popupEl){
+  document.addEventListener('keydown', (key) => {
+    if (key.key === "Escape"){
+      popupEl.classList.remove("popup_opened");
+    }
+  })
+}
+
+function closePopupByOverlay(popupEl){
+  document.addEventListener('mousedown', (evt) => {
+    if (evt.target === popupEl){
+      popupEl.classList.remove("popup_opened");
+    }
+  })
+}
+
 const openPopup = function (popupEl) {
   popupEl.classList.add("popup_opened");
+  document.addEventListener('keydown', closePopupByEsc(popupEl));
+  popupEl.addEventListener('mousedown',closePopupByOverlay(popupEl))
 };
 
 const closePopup = function (popupEl) {
   popupEl.classList.remove("popup_opened");
+  document.removeEventListener('keydown', closePopupByEsc(popupEl));
+  popupEl.removeEventListener('mousedown',closePopupByOverlay(popupEl))
 };
 
 function submitFormHandler(evt) {
@@ -117,4 +137,4 @@ popupFormAddCard.addEventListener('submit', submitFormAddCardHandler);
 
 closingPopupBigImg.addEventListener('click', function closepopup(){
     closePopup(popupBigImg);
-})
+});
