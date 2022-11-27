@@ -20,6 +20,21 @@ const imgName = document.querySelector('.popup__subtitle');
 const imgPopup = document.querySelector('.popup__img');
 const closingPopupBigImg = popupBigImg.querySelector('.popup__close-button');
 
+function changeCursorState(popups){
+  popups.forEach(popup => {
+    popup.addEventListener('mouseover', (evt) => {
+      if (evt.target === popup){
+        popup.querySelector('.popup__close-button').style.opacity = .6;
+        popup.style.cursor = 'pointer';
+      } else {
+        popup.querySelector('.popup__close-button').style.opacity = 1;
+        popup.style.cursor = 'default';
+      }
+    })
+  })
+}
+changeCursorState([popupAddCard,popupBigImg,popupEditProfile]);
+
 function render() {
   for(let i = initialCards.length - 1; i>=0; i--){
     renderCard(initialCards[i]);
