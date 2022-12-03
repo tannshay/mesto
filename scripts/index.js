@@ -1,5 +1,14 @@
 import initialCards from "./initialData.js";
-const cardsConteiner= document.querySelector(".mesto");
+import Card from "./Card.js";
+import FormValdator from "./FormValidator.js";
+const selectors = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__text',
+  submitButtonSelector: '.popup__save',
+  errorSelector: '.popup__input-error',
+  buttonDisableSelector: 'popup__save_disabled',
+  fieldsetSelector: '.popup__input-fieldset'
+}
 const cardTemplate = document.querySelector(".mesto__element-template").content;
 const popupEditProfile = document.querySelector(".popup_edit-profile");
 const popupForm = popupEditProfile.querySelector(".popup__form");
@@ -11,58 +20,28 @@ const profileAbout = document.querySelector(".profile__about");
 const popupAddCard = document.querySelector('.popup_add-card');
 const openingPopupAddCardButton = document.querySelector('.profile__addbutton');
 const popupFormAddCard = popupAddCard.querySelector('.popup__form');
-const cardName = popupAddCard.querySelector('.popup__text_type_name');
-const cardImgLink = popupAddCard.querySelector('.popup__text_type_about');
-const popupBigImg = document.querySelector('.popup_photo');
-const imgName = document.querySelector('.popup__subtitle');
-const imgPopup = document.querySelector('.popup__img');
 const popups = document.querySelectorAll('.popup');
 const popupAddCardSaveButton = popupAddCard.querySelector('.popup__save');
+const cardsConteiner = document.querySelector(".mesto");
+const cardName = popupAddCard.querySelector('.popup__text_type_name');
+const cardImgLink = popupAddCard.querySelector('.popup__text_type_about');
+const forms = document.querySelectorAll('.popup__form');
+
+forms.forEach(form =>{
+    const formValidation = new FormValdator(selectors,form);
+    formValidation.enableValidation();
+})
+
+function renderCard(cardDetails){
+  const newCard = new Card(cardDetails,cardTemplate);
+  cardsConteiner.prepend(newCard.createCard());
+}
 
 function render() {
   for(let i = initialCards.length - 1; i>=0; i--){
     renderCard(initialCards[i]);
   }
 }
-
-function switchLike(evt){
-  evt.target.classList.toggle("mesto__like_active");
-}
-
-function deletionCard(evt){
-  evt.target.closest(".mesto__element").remove();
-}
-
-function createCard(text) {
-  const newHtmlElement = cardTemplate.cloneNode(true);
-  const img = newHtmlElement.querySelector(".mesto__img");
-  img.src = text.link;
-  img.alt = text.name;
-  newHtmlElement.querySelector(".mesto__name").textContent = text.name;
-
-  const likeCard = newHtmlElement.querySelector(".mesto__like");
-  likeCard.addEventListener("click", switchLike);
-
-  const cardDelete = newHtmlElement.querySelector(".mesto__delete");
-  cardDelete.addEventListener("click", deletionCard);
-  listenCard(img);
-  return(newHtmlElement);
-}
-
-function renderCard(card){
-  cardsConteiner.prepend(createCard(card));
-}
-
-function listenCard(img) {
-    img.addEventListener("click", function (evt) {
-      openPopup(popupBigImg);
-      imgPopup.src = img.src;
-      imgName.textContent = img
-        .closest(".mesto__element")
-        .querySelector(".mesto__name").textContent;
-      imgPopup.alt = img.alt;
-    });
-  }
 
 render();
 
