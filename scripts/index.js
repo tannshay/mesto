@@ -123,6 +123,7 @@ function submitFormAddCardHandler(evt){
 }
 
 function openEditPopup(){
+  formValidators['formEditProfile'].resetValidation();
   openPopup(popupEditProfile);
   nameInput.value = profileName.textContent;
   aboutInput.value = profileAbout.textContent;
