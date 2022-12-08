@@ -17,34 +17,24 @@ const nameInput = popupEditProfile.querySelector(".popup__text_type_name");
 const aboutInput = popupEditProfile.querySelector(".popup__text_type_about");
 const profileName = document.querySelector(".profile__name");
 const profileAbout = document.querySelector(".profile__about");
-const popupAddCard = document.querySelector('.popup_add-card');
-const openingPopupAddCardButton = document.querySelector('.profile__addbutton');
-const popupFormAddCard = popupAddCard.querySelector('.popup__form');
-const popups = document.querySelectorAll('.popup');
+const popupAddCard = document.querySelector(".popup_add-card");
+const openingPopupAddCardButton = document.querySelector(".profile__addbutton");
+const popupFormAddCard = popupAddCard.querySelector(".popup__form");
+const popups = document.querySelectorAll(".popup");
 const cardsConteiner = document.querySelector(".mesto");
-const cardName = popupAddCard.querySelector('.popup__text_type_name');
-const cardImgLink = popupAddCard.querySelector('.popup__text_type_about');
+const cardName = popupAddCard.querySelector(".popup__text_type_name");
+const cardImgLink = popupAddCard.querySelector(".popup__text_type_about");
 const formValidators = {};
+const popupBigImg = document.querySelector(".popup_photo");
+const imgName = document.querySelector(".popup__subtitle");
+const imgPopup = document.querySelector(".popup__img");
 
 const handleCardClick = (name, link) => {
-  const popupBigImg = document.querySelector('.popup_photo');
-  const imgName = document.querySelector('.popup__subtitle');
-  const imgPopup = document.querySelector('.popup__img');
   imgPopup.src = link;
   imgName.textContent = name;
   imgPopup.alt = name;
-  popupBigImg.classList.add("popup_opened");
-  function closePopupBigImg(){
-    popupBigImg.classList.remove("popup_opened");
-    document.removeEventListener('keydown', closePopupBigImgByEsc);
-  }
-  function closePopupBigImgByEsc(evt){
-    if (evt.key === 'Escape'){
-      closePopupBigImg();
-    }
-  }
-  document.addEventListener('keydown', closePopupBigImgByEsc);
-}
+  openPopup(popupBigImg);
+};
 
 const enableValidation = (selectors) => {
   const formList = Array.from(document.querySelectorAll(selectors.formSelector));
