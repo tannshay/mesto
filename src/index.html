@@ -5,17 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body>
     <div class="page">
         <header class="header">
-            <img src="./images/logo.svg" alt="логотип" class="header__logo">
+            <img src="<%=require('./images/logo.svg')%>" alt="логотип" class="header__logo">
         </header>
         <main class="content">
             <section class="profile">
                 <div class="profile__shape">
-                    <img src="./images/ava.jpeg" alt="аватар" class="profile__avatar">
+                    <img src="<%=require('./images/ava.jpeg')%>" alt="аватар" class="profile__avatar">
                     <div class="profile__info">
                         <div class="profile__author">
                             <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -58,12 +57,12 @@
                 <h2 class="popup__title">Новое место</h2>
                 <form name="formAddCard" action="#" class="popup__form" novalidate>
                     <fieldset class="popup__input-fieldset">
-                        <input class="popup__text popup__text_type_name" name="name" placeholder="Название" minlength="
+                        <input class="popup__text popup__text_type_name" name="imgName" placeholder="Название" minlength="
                                     2" maxlength="30" required />
                         <span class="popup__input-error"></span>
                     </fieldset>
                     <fieldset class="popup__input-fieldset">
-                        <input class="popup__text popup__text_type_about" name="about" placeholder="Ссылка на картинку" type="url"
+                        <input class="popup__text popup__text_type_about" name="imgLink" placeholder="Ссылка на картинку" type="url"
                             required />
                         <span class="popup__input-error"></span>
                     </fieldset>
@@ -90,6 +89,5 @@
             </div>
         </article>
     </template>
-    <script src="./scripts/index.js" type="module"></script>
 </body>
 </html>

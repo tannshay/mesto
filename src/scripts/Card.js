@@ -22,7 +22,7 @@ export default class Card {
     };
   
     createCard = () => {
-      const newHtmlElement = this._cardTemplate.cloneNode(true);
+      const newHtmlElement = this._cardTemplate.cloneNode(true); 
       this._CardImg = newHtmlElement.querySelector('.mesto__img');
       this._CardImg.src = this._cardDetails.link;
       this._CardImg.alt = this._cardDetails.name;
