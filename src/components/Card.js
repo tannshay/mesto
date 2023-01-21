@@ -6,7 +6,7 @@ export default class Card {
     }
 
     _setEventListeners = () => {
-        this._CardImg.addEventListener('click', () => {
+        this._cardImg.addEventListener('click', () => {
             this._handleCardClick(this._cardDetails.name, this._cardDetails.link);
         })
         this._likeCard.addEventListener('click', this._switchLike);
@@ -23,9 +23,9 @@ export default class Card {
   
     createCard = () => {
       const newHtmlElement = this._cardTemplate.cloneNode(true); 
-      this._CardImg = newHtmlElement.querySelector('.mesto__img');
-      this._CardImg.src = this._cardDetails.link;
-      this._CardImg.alt = this._cardDetails.name;
+      this._cardImg = newHtmlElement.querySelector('.mesto__img');
+      this._cardImg.src = this._cardDetails.link;
+      this._cardImg.alt = this._cardDetails.name;
       newHtmlElement.querySelector('.mesto__name').textContent = this._cardDetails.name;
       this._likeCard = newHtmlElement.querySelector('.mesto__like');
       this._cardDeleteButton = newHtmlElement.querySelector('.mesto__delete');

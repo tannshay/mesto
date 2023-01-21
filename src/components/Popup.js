@@ -1,21 +1,20 @@
 export default class Popup {
   constructor(popupSelector) {
     this._popupEl = document.querySelector(popupSelector)
-    this._imgPopup = document.querySelector(".popup__img")
-    this._imgName = document.querySelector(".popup__subtitle")
+    this._handleEscClose = this._handleEscClose.bind(this)
   }
 
   open() {
     this._popupEl.classList.add("popup_opened")
-    document.addEventListener("keydown", this._closePopupByEsc.bind(this))
+    document.addEventListener("keydown", this._handleEscClose)
   }
 
   close() {
     this._popupEl.classList.remove("popup_opened")
-    document.removeEventListener("keydown", this._closePopupByEsc.bind(this))
+    document.removeEventListener("keydown", this._handleEscClose)
   }
 
-  _closePopupByEsc(evt) {
+  _handleEscClose(evt) {
     if (evt.key === "Escape") {
       this.close()
     }

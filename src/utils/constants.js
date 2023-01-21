@@ -23,6 +23,21 @@ const initialCards = [
     name: "Байкал",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
   },
-];
+]
 
-export default initialCards;
+const selectors = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__text",
+  submitButtonSelector: ".popup__save",
+  errorSelector: ".popup__input-error",
+  buttonDisableSelector: "popup__save_disabled",
+  fieldsetSelector: ".popup__input-fieldset",
+}
+
+const cardTemplate = document.querySelector(".mesto__element-template").content
+const openingEditProfileButton = document.querySelector(".profile__edit")
+const openingPopupAddCardButton = document.querySelector(".profile__addbutton")
+const cardsContainer = document.querySelector(".mesto")
+const formValidators = {}
+
+export {initialCards, selectors, cardTemplate, openingEditProfileButton , openingPopupAddCardButton, cardsContainer, formValidators}
