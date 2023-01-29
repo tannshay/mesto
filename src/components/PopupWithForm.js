@@ -18,8 +18,9 @@ export class PopupWithForm extends Popup {
 
     _handleSubmit(evt){
         evt.preventDefault()
-        this._callbackSubmitForm(this._getInputValues())
-        this.close()
+        this._callbackSubmitForm(this._getInputValues()).then(() =>{
+          this.close()
+        })
       }
   
     close() {

@@ -1,13 +1,4 @@
 .mesto__like{
-    width: 22px;
-    height: 19px;
-    border: 0;
-    padding: 0;
-    background-color: #fff;
-    background-image: url(../../../images/like.svg);
-}
-
-.mesto__like:hover{
-    opacity: .6;
-    cursor: pointer;
+    display: flex;
+    flex-direction: column;
 }

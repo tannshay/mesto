@@ -1,6 +1,7 @@
 .profile__shape{
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 @media (max-width: 900px){
