@@ -33,14 +33,13 @@ export default class Card {
       console.log('asdasd')
     }
 
-    switchLike(){
+    switchLike(res){
       if (this.isLiked()){
         this._likeCardButton.classList.remove('mesto__like_type_heart_active')
-        this._likeCounter.textContent = parseInt(this._likeCounter.textContent) - 1
       } else{
         this._likeCardButton.classList.add('mesto__like_type_heart_active')
-        this._likeCounter.textContent = parseInt(this._likeCounter.textContent) + 1
       }
+      this._likeCounter.textContent = res.likes.length
     }
   
     createCard = () => {

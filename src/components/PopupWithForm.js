@@ -6,6 +6,7 @@ export class PopupWithForm extends Popup {
       this._callbackSubmitForm = callbackSubmitForm
       this._inputList = Array.from(this._inputForm.querySelectorAll('.popup__text'))
       this._handleSubmitBind = this._handleSubmit.bind(this)
+      this._submitButton = this._popupEl.querySelector('.popup__save')
     }
   
     _getInputValues(){
@@ -16,10 +17,10 @@ export class PopupWithForm extends Popup {
         return this._inputValues
     }
 
-    _handleSubmit(evt){
-        evt.preventDefault()
-        this._callbackSubmitForm(this._getInputValues()).then(() =>{
-          this.close()
+    _handleSubmit(){
+        this._callbackSubmitForm(this._getInputValues()).then(() => this.close())
+        .finally(() => {
+          this._submitButton.textContent = 'Сохранить'
         })
       }
   
@@ -30,7 +31,11 @@ export class PopupWithForm extends Popup {
   
     setEventListeners() {
       super.setEventListeners()
-      this._inputForm.addEventListener("submit", this._handleSubmitBind)
+      this._inputForm.addEventListener('submit', (evt) => {
+        evt.preventDefault()
+        this._submitButton.textContent = 'Сохранение...'
+        this._handleSubmitBind()
+      });
     }
 
     setInputValues(data){

@@ -20,11 +20,16 @@ const deletionCard = (cardObj, card) =>{
 
 const handleLikeClick = (cardObject) => {
   if(cardObject.isLiked()){
-    api.deleteLike(cardObject._cardDetails._id, cardObject._userId).then((res) => cardObject._cardDetails.likes = res.likes)
+    api.deleteLike(cardObject._cardDetails._id, cardObject._userId).then((res) => {
+      cardObject.switchLike(res)
+      cardObject._cardDetails.likes = res.likes
+    }).catch(res => console.log(res))
   } else {
-    api.putLike(cardObject._cardDetails._id, cardObject._userId).then((res) => cardObject._cardDetails.likes = res.likes)
+    api.putLike(cardObject._cardDetails._id, cardObject._userId).then((res) => {
+      cardObject.switchLike(res)
+      cardObject._cardDetails.likes = res.likes
+    }).catch(res => console.log(res))
   }
-  cardObject.switchLike()
 }
 function renderCard(cardData) {
   const cardElement = createCard(cardData)
@@ -63,36 +68,27 @@ Promise.all([promiseUserInfo, promiseGetInitialCards])
 })
 
 const handleEditFormSubmit = (data) => {
-  document.querySelector('.popup_edit-profile').querySelector('.popup__save').textContent = 'Сохранение...'
   return api.setUserInfo({newName: data.name, newAbout: data.about}).then(() => {
-    userInfo.setUserInfo(data)
-  }).finally(() => {
-    document.querySelector('.popup_edit-profile').querySelector('.popup__save').textContent = 'Сохранить'
+    userInfo.setUserInfo(data).catch(res => console.log(res))
   })
 }
 const handleCardFormSubmit = ({imgName, imgLink}) => {
-  document.querySelector('.popup_add-card').querySelector('.popup__save').textContent = 'Сохранение...'
   return api.postCard({newName: imgName, newLink: imgLink})
   .then((res) => {
     renderCard(res)
-  }).finally(() =>{
-    document.querySelector('.popup_add-card').querySelector('.popup__save').textContent = 'Сохранить'
-  })
+  }).catch(res => console.log(res))
 }
 
 const handleAvatarFormSubmit = (avaLink) =>{
-  document.querySelector('.popup_change-avatar').querySelector('.popup__save').textContent = 'Сохранение...'
-  return api.changeAvatar(avaLink).then((res) => {
+   return api.changeAvatar(avaLink).then((res) => {
     userInfo.setAvatar(res.avatar)
-  }).finally(() => {
-    document.querySelector('.popup_change-avatar').querySelector('.popup__save').textContent = 'Сохранить'
-  })
+  }).catch(res => console.log(res))
 }
 
 const handleDeleteFormSubmit = (cardId, card) => {
-  api.deleteCard(cardId).then(() => {
+  return api.deleteCard(cardId).then(() => {
     card.remove()
-  })
+  }).catch(res => console.log(res))
 }
 
 const popupEditProfile = new PopupWithForm(".popup_edit-profile", handleEditFormSubmit)

@@ -13,9 +13,11 @@ export class PopupWithSubmit extends Popup {
     }
 
     setEventListeners(){
+        super.setEventListeners()
         this._form.addEventListener("submit", () => {
-            this._callbackSubmitForm(this._cardId, this._card)
-            this.close()
+            this._callbackSubmitForm(this._cardId, this._card).then(() => {
+                this.close()
+            })
         })
     }
 }
