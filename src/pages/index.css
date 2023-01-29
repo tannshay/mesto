@@ -15,7 +15,7 @@
 @import url(../blocks/profile/__edit/profile__edit.css);
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__shape/profile__shape.css);
-@import url(../blocks/profile/__avatar/_change-icon/profile__avatar_change-icon.css);
+@import url(../blocks/profile/_change-icon/profile__change-icon.css);
 
 @import url(../blocks/mesto/mesto.css);
 @import url(../blocks/mesto/__img/mesto__img.css);
